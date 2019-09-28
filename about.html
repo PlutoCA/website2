@@ -1,0 +1,108 @@
+<!--
+ * @Date: 2019-09-27 16:09:29
+ * @LastEditors: Pluto
+ * @LastEditTime: 2019-09-28 12:28:23
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./asset/style/reset.css">
+    <title>关于我们 - 星图</title>
+</head>
+
+<body>
+    <!-- nav -->
+    <div class="nav">
+        <div class="nav_content">
+            <div class="logo">
+                <img src="./asset/image/logo@2x.png" alt="logo">
+            </div>
+            <div class="tags">
+                <ul class="tabs">
+                    <li class="home">
+                        <a href="./index.html">首页</a>
+                    </li>
+                    <li class="about active">
+                        <a href="./about.html">关于我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="about_main">
+        <div class="content_box">
+            <div class="content">
+                <h1 class="about">
+                    <span>关于我们</span>
+                    <img src="./asset/image/txt_gywm@2x.png" alt="about_us">
+                </h1>
+                <div class="text">
+                    <p class="tit"><span class="green">Starmap</span>,为您提供品效<span class="green">合一的跨境流量整合服务</span>。</p>
+                    <p><span class="green">海外市场洞察：</span>海外用户行为研究、海外竞品分析。</p>
+                    <p><span class="green">优质渠道传播：</span>媒介采购方案、广告投放优化、账户管理。</p>
+                    <p><span class="green">社交内容营销：</span>社会化营销、海外PR服务、海外红人。</p>
+                    <p><span class="green">本地化运营支持：</span>对接本地网盟渠道、地面推广资源协调。</p>
+                    <p><span class="green">技术服务支持：</span>渠道官方API对接、建站协助服务。行业经验丰富的商务全程引导客户，</p>
+                    <p class="tit">行业经验丰富的商务全程引导客户，<span class="green">每个项目会有专门指定的项目经理精细化提供策略支持和资源调度</span> ，配合默契的优化分析师和广告美工保障服务质量。10+人的资深研发团队API接入、数据分析和智能投放平台的开发能力。</p>
+                    <p>团队核心人员来自<span class="green">飞流、鲸旗游戏、飞书</span>  等国内一线跨境发行企业，与<span class="green">腾讯、盛大、昆仑万维</span>等多家国内游戏公司有过合作游戏运营和发行的项目经验，对游戏研发、运营、发行都具有专业的见解和优秀的执行力。为合作方提供本地化运营、发行能力和广告优化、预算账期等专业的流量服务。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="footer_content">
+            <p class="white">联系方式</p>
+            <p>深圳总部： +86 186 961 82517</p>
+            <p>邮箱：cathy@starmapnet.com</p>
+            <p>地址： 广东省深圳市南山区田厦翡翠明珠写字楼2602</p>
+            <p class="white wx">微信公众号</p>
+            <img src="./asset/image/img_code@2x.png" alt="wx_code">
+        </div>
+    </div>
+    <script src="./asset/js/about.js"></script>
+    <script>
+        function resize(){
+            // var docEl = document.documentElement
+            // var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+
+            // function recalc() {
+            //     var designWidth = 1920
+            //     var clientWidth = docEl.clientWidth
+            //     if (!clientWidth || clientWidth > designWidth) return
+            //     docEl.style.fontSize = (16 * clientWidth / designWidth) + 'px'
+            // }
+
+            // if (!document.addEventListener) return
+            // window.addEventListener(resizeEvt, recalc, false)
+            // document.addEventListener('DOMContentLoaded', recalc, false)
+            var w=document.body.clientWidth;
+            if (w <= 960) {
+                $('body').attr('id', 'mobile')
+                document.querySelector("html").style.fontSize= w * 16 / 750 + 'px';
+            } else {
+                $('body').attr('id', '')
+                document.querySelector("html").style.fontSize= w * 16 / 1920 + 'px';                
+            }
+            //rem与px没有实际的关系，根据情况不同比例不同的，这里说的根据情况，实际上就是自己设定比例
+            //假设1rem=20px;那么关系就是(屏幕宽度*20/设计稿宽度)，设计稿的字体大小是16px，那么就等于16/20rem;
+            //假设1rem=16px;那么关系就是(屏幕宽度*16/设计稿宽度)，设计稿的字体大小是16px，那么就等于16/16rem;
+            //注意，谷歌浏览器最小字体为12px,定义关系的时候，不要小于12px;极限是1rem=12px；
+        };
+        window.onresize = () => {
+            resize()
+        };
+        resize();
+    </script>
+</body>
+
+</html>
