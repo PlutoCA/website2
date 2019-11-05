@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-09-26 11:24:02
  * @LastEditors: Pluto
- * @LastEditTime: 2019-10-09 19:02:55
+ * @LastEditTime: 2019-11-05 18:25:25
  -->
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./asset/style/reset.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" />
+    <link rel="stylesheet" href="./asset/syalert/syalert.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" />
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>var syalert=function(){return{syopen:function(id){var dom=$("#"+id);this.sycenter(dom);var name=dom.attr("sy-enter");var type=dom.attr("sy-type");var mask=dom.attr("sy-mask");dom.addClass(name);dom.show();var that=this;$("body").css({"overflow-y":"hidden"});if(mask=="true"){$("body").append("<div class='sy-mask' onclick=\"closeAlert('"+id+"')\"></div>");$(".sy-mask").fadeIn(300)}setTimeout(function(){dom.removeClass(name)},300);if(type=="tips"){setTimeout(function(){that.syhide(id)},1500)}},syhide:function(id){if(typeof id=="undefined"){var dom=$(".sy-alert")}else{var dom=$("#"+id)}var name=dom.attr("sy-leave");dom.addClass(name);$(".sy-mask").fadeOut(300);setTimeout(function(){dom.hide();dom.removeClass(name);$(".sy-mask").remove();$("body").css({"overflow-y":"auto"})},300)},sycenter:function(dom){var mgtop=parseFloat(dom.height()/2);dom.css({"top":"50%","margin-top":"-"+mgtop+"px"})}}}();</script>
     <title>星图官网</title>
 
 </head>
@@ -33,13 +37,16 @@
                     <li class="about">
                         <a href="./about.html">关于我们</a>
                     </li>
+                    <li class="about">
+                        <a href="./other.html">演示</a>
+                    </li>
+                    <!-- <li onClick="syalert.syopen('alert4')" class="about">
+                        <a>登录</a>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </div>
-
-    <!-- 大图 -->
-    
     <!-- main -->
     <div class="main">
         <div class="banner"></div>
@@ -412,20 +419,50 @@
         </div>
     </div>
 
+    <div class="sy-alert sy-alert-model animated" sy-enter="zoomIn" sy-leave="zoomOut" sy-type="confirm" sy-mask="true" id="alert4">
+        <div class="sy-title">登录</div>
+        <div class="sy-content">
+            <div class="form">
+            <p class="input-item"><input id="account" type="text" placeholder="请输入账号" /></p>
+            <p class="input-item"><input id="password" type="password" placeholder="请输入密码" /></p>
+            </div>
+        </div> 
+        <div class="sy-btn">
+            <button onClick="syalert.syhide('alert4')">取消</button>
+            <button onClick="ok()">确定</button>
+        </div> 
+        </div>
+
+
     <!-- 页脚 -->
     <div class="footer">
         <div class="footer_content">
             <p class="white">联系方式</p>
-            <p>深圳总部： +86 186 961 82517</p>
-            <p>邮箱：cathy@starmapnet.com</p>
+            <p>
+                星图互联：contact@starmapnet.com
+            </p>
+            <p>
+                星图智能：contact@starmapnet.ai
+            </p>
             <p>地址： 广东省深圳市南山区田厦翡翠明珠写字楼2602</p>
             <p class="white">微信公众号</p>
             <img src="./asset/image/img_code@2x.png" alt="wx_code">
 
         </div>
     </div>
+    
 
     <script type="text/javascript">
+        console.log('syalert', syalert)
+        function ok() {
+           const a = $("#account").val()
+           const b = $("#password").val()
+           if (a === "admin" && b === "starmap123") {
+            console.log(a, b)
+                syalert.syhide('alert4');
+                window.location = `${window.location.origin}/other.html`
+           }
+        }
         $("#first").click(() => {
             change('first')
         })
